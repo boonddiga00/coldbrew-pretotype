@@ -4,11 +4,11 @@ import PageWithImage from "../components/PageWithImage";
 const Home: NextPage = () => {
   return (
     <PageWithImage
-      reverse
       page={{
         image: "image.jpg",
-        title: "콜드브루부터 시작하는\n새로운 모닝루틴",
-        description: "얼음만 넣어 간단히,\n바빠도 커피 한 잔 정도는 나를 위해",
+        title: "합리적인 가격으로\n일상을 좀 더 가치있게",
+        description:
+          "한 잔 당 1500원의 가격으로\n합리적인 데일리 루틴을 지켜보세요",
       }}
     />
   );
