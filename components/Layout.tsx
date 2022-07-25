@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
   main {
-    padding: 0 30px;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -24,10 +23,10 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <>
+    <main>
       <GlobalStyle />
-      <main>{children}</main>
-    </>
+      {children}
+    </main>
   );
 };
 
