@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { IBrand } from "../types/clayful";
 import BrandBox from "./BrandBox";
-import Title from "./Title";
+import { TitleText, DescriptionText } from "./interfaces/TextInterfaces";
 
 const Container = styled.div`
   height: 100vh;
@@ -20,12 +20,11 @@ const TextContainer = styled.div`
   align-items: center;
 `;
 
-const TitleText = styled(Title)`
+const Title = styled(TitleText)`
   margin-bottom: 30px;
 `;
 
-const Description = styled.p`
-  font-size: 24px;
+const Description = styled(DescriptionText)`
   margin-bottom: 15px;
 `;
 
@@ -34,6 +33,9 @@ const BrandContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
+  @media screen and (max-width: 830px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 interface IBrandIntroductionProps {
@@ -44,13 +46,15 @@ const BrandIntroduction = ({ brand }: IBrandIntroductionProps) => {
   return (
     <Container>
       <TextContainer>
-        <TitleText>물론, 맛도 챙겼어요</TitleText>
+        <Title>물론, 맛도 챙겼어요</Title>
         <Description>콜드브루라고 맛이 없다는 것은 편견입니다.</Description>
         <Description>국내 유명 로스터리의 콜드브루를 만나보세요.</Description>
       </TextContainer>
       <BrandContainer>
         {brand &&
-          brand.map((brand, index) => <BrandBox key={index} brand={brand} />)}
+          brand.map((brand, index) => (
+            <BrandBox key={`brand-box ${index}`} brand={brand} />
+          ))}
       </BrandContainer>
     </Container>
   );

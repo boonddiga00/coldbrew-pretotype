@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ICatagoryItem } from "../types/clayful";
-import Title from "./Title";
+import { TitleText, DescriptionText } from "./interfaces/TextInterfaces";
 
 const Container = styled.div<{ isReverse: boolean }>`
   max-width: 1200px;
@@ -9,6 +9,18 @@ const Container = styled.div<{ isReverse: boolean }>`
   flex-direction: ${({ isReverse }) => (isReverse ? "row-reverse" : "row")};
   align-items: center;
   height: 100vh;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    div {
+      width: 100%;
+      height: 50%;
+      align-items: flex-start;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -31,19 +43,34 @@ const TextContainer = styled.div<{ isReverse: boolean }>`
   h1:nth-child(2) {
     margin-bottom: 20px;
   }
+  @media screen and (max-width: 800px) {
+    justify-content: center;
+    padding-bottom: 100px;
+  }
+  @media screen and (max-width: 380px) {
+    width: 100%;
+    h1 {
+      width: 100%;
+    }
+  }
 `;
 
-const TitleText = styled(Title)<{ isReverse: boolean }>`
+const Title = styled(TitleText)<{ isReverse: boolean }>`
   text-align: ${({ isReverse }) => (isReverse ? "right" : "left")};
   width: 70%;
   line-height: 1.5;
+  @media screen and (max-width: 800px) {
+    text-align: left;
+  }
 `;
 
-const Description = styled.p<{ isReverse: boolean }>`
+const Description = styled(DescriptionText)<{ isReverse: boolean }>`
   text-align: ${({ isReverse }) => (isReverse ? "right" : "left")};
   width: 70%;
-  font-size: 24px;
   line-height: 1.5;
+  @media screen and (max-width: 800px) {
+    text-align: left;
+  }
 `;
 
 interface IIntroHorizontalProps {
@@ -62,9 +89,9 @@ const IntroHorizontal = ({ reverse, page }: IIntroHorizontalProps) => {
       )}
       <TextContainer isReverse={isReverse}>
         {page?.title.split("\\n").map((string, index) => (
-          <TitleText key={`title ${index}`} isReverse={isReverse}>
+          <Title key={`title ${index}`} isReverse={isReverse}>
             {string}
-          </TitleText>
+          </Title>
         ))}
         {page?.description.split("\\n").map((string, index) => (
           <Description key={`description ${index}`} isReverse={isReverse}>

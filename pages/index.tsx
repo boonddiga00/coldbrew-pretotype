@@ -1,13 +1,16 @@
 import type { GetStaticProps, NextPage } from "next";
 import IntroHorizontal from "../components/IntroHorizontal";
 import axios from "axios";
-import { IBrand, ICatagoryItem, ICatalog } from "../types/clayful";
+import { IBrand, ICatalog } from "../types/clayful";
 import BrandIntroduction from "../components/BrandIntroduction";
-import Button from "../components/Button";
+import Button from "../components/interfaces/Button";
 import styled from "styled-components";
-import Section from "../components/Section";
+import Section from "../components/interfaces/Section";
 import Link from "next/link";
-import Title from "../components/Title";
+import {
+  TitleText,
+  DescriptionText,
+} from "../components/interfaces/TextInterfaces";
 
 const GoToSubscribe = styled.div`
   width: 100%;
@@ -25,6 +28,7 @@ const Links = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 250px;
+  padding-bottom: 100px;
   a {
     font-size: 20px;
     color: #ff6b00;
@@ -44,20 +48,18 @@ const ImageFullPage = styled.div<{ url?: string }>`
   left: 0;
 `;
 
-const TitleText = styled(Title)<{ color: string }>`
+const Title = styled(TitleText)<{ color: string }>`
   color: ${(props) => props.color};
 `;
 
-const Description = styled.p`
-  font-size: 24px;
-`;
+const Description = styled(DescriptionText)``;
 
 const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
   return (
     <>
       <Section verticalPadding="30px">
         <GoToSubscribe>
-          <TitleText color="#000000">{pages?.title}</TitleText>
+          <Title color="#000000">{pages?.title}</Title>
           <Description>{pages?.description}</Description>
           <Links>
             <Link href="#">
@@ -78,9 +80,9 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
       <Section>
         <ImageFullPage url={pages?.items[3].image?.url}>
           {pages?.items[3].title.split("\\n").map((string, index) => (
-            <TitleText color="#ffffff" key={`fullpage-title ${index}`}>
+            <Title color="#ffffff" key={`fullpage-title ${index}`}>
               {string}
-            </TitleText>
+            </Title>
           ))}
           <Button text="정기구독하기" />
         </ImageFullPage>

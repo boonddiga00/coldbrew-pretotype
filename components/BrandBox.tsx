@@ -10,6 +10,10 @@ const Container = styled.div`
   height: 250px;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
   padding: 30px;
+  @media screen and (max-width: 500px) {
+    padding: 10px;
+    height: 150px;
+  }
 `;
 
 const Logo = styled.img`
