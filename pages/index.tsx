@@ -11,6 +11,7 @@ import {
   TitleText,
   DescriptionText,
 } from "../components/interfaces/TextInterfaces";
+import { useEffect } from "react";
 
 const GoToSubscribe = styled.div`
   width: 100%;
@@ -65,7 +66,7 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
             <Link href="#">
               <a>더 알아보기</a>
             </Link>
-            <Link href="#">
+            <Link href="/subscribe">
               <a>구매하기</a>
             </Link>
           </Links>
