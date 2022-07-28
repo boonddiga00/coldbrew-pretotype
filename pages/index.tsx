@@ -11,7 +11,7 @@ import {
   TitleText,
   DescriptionText,
 } from "../components/interfaces/TextInterfaces";
-import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const GoToSubscribe = styled.div`
   width: 100%;
@@ -24,11 +24,6 @@ const GoToSubscribe = styled.div`
 `;
 
 const Links = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 250px;
   padding-bottom: 100px;
   a {
     font-size: 20px;
@@ -56,6 +51,7 @@ const Title = styled(TitleText)<{ color: string }>`
 const Description = styled(DescriptionText)``;
 
 const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
+  const router = useRouter();
   return (
     <>
       <Section verticalPadding="30px">
@@ -63,11 +59,8 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
           <Title color="#000000">{pages?.title}</Title>
           <Description>{pages?.description}</Description>
           <Links>
-            <Link href="#">
-              <a>더 알아보기</a>
-            </Link>
             <Link href="/subscribe">
-              <a>구매하기</a>
+              <a>구독 체험하기</a>
             </Link>
           </Links>
         </GoToSubscribe>
@@ -85,7 +78,10 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
               {string}
             </Title>
           ))}
-          <Button text="정기구독하기" />
+          <Button
+            text="구매과정 구경하기"
+            onClick={() => router.push("/subscribe")}
+          />
         </ImageFullPage>
       </Section>
     </>

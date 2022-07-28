@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import styled from "styled-components";
 
 const ButtonOrange = styled.button`
@@ -13,10 +14,11 @@ const ButtonOrange = styled.button`
 
 interface IButtonProps {
   text: string;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const Button = ({ text }: IButtonProps) => {
-  return <ButtonOrange>{text}</ButtonOrange>;
+const Button = ({ text, onClick }: IButtonProps) => {
+  return <ButtonOrange onClick={onClick}>{text}</ButtonOrange>;
 };
 
 export default Button;

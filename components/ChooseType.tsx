@@ -1,4 +1,5 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef, useState } from "react";
+import { FieldValues, UseFormRegister } from "react-hook-form";
 import styled from "styled-components";
 import { IBrand } from "../types/clayful";
 import BrandBox from "./BrandBox";
@@ -38,7 +39,8 @@ const GridBox = styled.div`
   gap: 30px;
 `;
 
-const ChooseButton = styled.div`
+const ChooseBox = styled.label`
+  position: relative;
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
   width: 100%;
   height: 25%;
@@ -51,18 +53,34 @@ const ChooseButton = styled.div`
 
 interface IChooseTypeProps {
   children: ReactNode;
+  register: UseFormRegister<FieldValues>;
+  name: "roastery" | "caffeine" | "routine";
   stringContent?: string[];
   brand?: IBrand[] | null;
 }
 
-const ChooseType = ({ children, stringContent, brand }: IChooseTypeProps) => {
+const ChooseType = ({
+  children,
+  register,
+  name,
+  stringContent,
+  brand,
+}: IChooseTypeProps) => {
   return (
     <Container>
       <TextContainer>{children}</TextContainer>
       {stringContent && (
         <FlexBox>
           {stringContent.map((content, index) => (
-            <ChooseButton key={`content ${index}`}>{content}</ChooseButton>
+            <>
+              <input
+                {...register(name)}
+                type="radio"
+                value={content}
+                id={`${name} ${index}`}
+              />
+              <ChooseBox htmlFor={`${name} ${index}`}>{content}</ChooseBox>
+            </>
           ))}
         </FlexBox>
       )}

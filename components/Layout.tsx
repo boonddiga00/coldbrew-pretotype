@@ -13,6 +13,9 @@ const GlobalStyle = createGlobalStyle`
     all: unset;
     cursor: pointer;
   }
+  html {
+    font-family: 'Roboto', sans-serif;
+  }
   main {
     max-width: 1200px;
     margin: 0 auto;
@@ -27,25 +30,11 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
         <title>After Night</title>
+        <meta
+          name="description"
+          content="직장인들을 위한 콜드브루 정기구독 서비스"
+        />
       </Head>
       <main>
         <GlobalStyle />
