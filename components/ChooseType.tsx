@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { ReactNode, useRef, useState } from "react";
-import { FieldValues, UseFormRegister } from "react-hook-form";
-=======
 import { ReactNode } from "react";
->>>>>>> 8044c13 (Subscribe Page for Desktop & Header)
+import { FieldValues, UseFormRegister } from "react-hook-form";
 import styled from "styled-components";
 import { IBrand } from "../types/clayful";
 import BrandBox from "./BrandBox";
@@ -43,12 +39,8 @@ const GridBox = styled.div`
   gap: 30px;
 `;
 
-<<<<<<< HEAD
 const ChooseBox = styled.label`
   position: relative;
-=======
-const ChooseButton = styled.div`
->>>>>>> 8044c13 (Subscribe Page for Desktop & Header)
   box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
   width: 100%;
   height: 25%;
@@ -61,16 +53,12 @@ const ChooseButton = styled.div`
 
 interface IChooseTypeProps {
   children: ReactNode;
-<<<<<<< HEAD
   register: UseFormRegister<FieldValues>;
   name: "roastery" | "caffeine" | "routine";
-=======
->>>>>>> 8044c13 (Subscribe Page for Desktop & Header)
   stringContent?: string[];
   brand?: IBrand[] | null;
 }
 
-<<<<<<< HEAD
 const ChooseType = ({
   children,
   register,
@@ -78,16 +66,12 @@ const ChooseType = ({
   stringContent,
   brand,
 }: IChooseTypeProps) => {
-=======
-const ChooseType = ({ children, stringContent, brand }: IChooseTypeProps) => {
->>>>>>> 8044c13 (Subscribe Page for Desktop & Header)
   return (
     <Container>
       <TextContainer>{children}</TextContainer>
       {stringContent && (
         <FlexBox>
           {stringContent.map((content, index) => (
-<<<<<<< HEAD
             <>
               <input
                 {...register(name)}
@@ -97,9 +81,6 @@ const ChooseType = ({ children, stringContent, brand }: IChooseTypeProps) => {
               />
               <ChooseBox htmlFor={`${name} ${index}`}>{content}</ChooseBox>
             </>
-=======
-            <ChooseButton key={`content ${index}`}>{content}</ChooseButton>
->>>>>>> 8044c13 (Subscribe Page for Desktop & Header)
           ))}
         </FlexBox>
       )}
