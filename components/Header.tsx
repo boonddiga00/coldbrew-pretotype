@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.header`
@@ -42,7 +44,8 @@ const Logo = styled.img`
 `;
 
 const Header = () => {
-  return (
+  const router = useRouter();
+  return router.pathname !== "/emailForm" ? (
     <Container>
       <Navigation>
         <NavIcon logo>
@@ -60,7 +63,7 @@ const Header = () => {
         </NavIcon>
       </Navigation>
     </Container>
-  );
+  ) : null;
 };
 
 export default Header;
