@@ -1,8 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
 import IntroHorizontal from "../components/IntroHorizontal";
 import axios from "axios";
-import { IBrand, ICatalog } from "../types/clayful";
-import BrandIntroduction from "../components/BrandIntroduction";
+import { ICatalog, ICollection } from "../types/clayful";
 import Button from "../components/interfaces/Button";
 import styled from "styled-components";
 import Section from "../components/interfaces/Section";
@@ -11,6 +10,7 @@ import {
   TitleText,
   DescriptionText,
 } from "../components/interfaces/TextInterfaces";
+import Collections from "../components/Collections";
 
 const GoToSubscribe = styled.div`
   width: 100%;
@@ -26,8 +26,7 @@ const Links = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 250px;
+  justify-content: center;
   padding-bottom: 100px;
   a {
     font-size: 20px;
@@ -54,7 +53,7 @@ const Title = styled(TitleText)<{ color: string }>`
 
 const Description = styled(DescriptionText)``;
 
-const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
+const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, collections }) => {
   return (
     <>
       <Section verticalPadding="30px">
@@ -62,11 +61,8 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
           <Title color="#000000">{pages?.title}</Title>
           <Description>{pages?.description}</Description>
           <Links>
-            <Link href="#">
-              <a>더 알아보기</a>
-            </Link>
-            <Link href="#">
-              <a>구매하기</a>
+            <Link href="/emailForm">
+              <a>이메일 적고 혜택 받아가기 &rarr;</a>
             </Link>
           </Links>
         </GoToSubscribe>
@@ -74,17 +70,19 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
       <Section verticalPadding="30px">
         <IntroHorizontal page={pages?.items[0]} />
         <IntroHorizontal page={pages?.items[1]} reverse />
-        <BrandIntroduction brand={brand} />
-        <IntroHorizontal page={pages?.items[2]} />
+        {collections && (
+          <Collections collections={collections} page={pages?.items[2]} />
+        )}
+        <IntroHorizontal page={pages?.items[3]} />
       </Section>
       <Section>
-        <ImageFullPage url={pages?.items[3].image?.url}>
-          {pages?.items[3].title.split("\\n").map((string, index) => (
+        <ImageFullPage url={pages?.items[4].image?.url}>
+          {pages?.items[4].title.split("\\n").map((string, index) => (
             <Title color="#ffffff" key={`fullpage-title ${index}`}>
               {string}
             </Title>
           ))}
-          <Button text="정기구독하기" />
+          <Button text="혜택 받기" />
         </ImageFullPage>
       </Section>
     </>
@@ -93,7 +91,7 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, brand }) => {
 
 interface IGetStaticPropsRetrun {
   pages: ICatalog | null;
-  brand: IBrand[] | null;
+  collections: ICollection[] | null;
 }
 
 export const getStaticProps: GetStaticProps<
@@ -110,8 +108,8 @@ export const getStaticProps: GetStaticProps<
         },
       }
     );
-    const brandPayload = await axios.get<IBrand[]>(
-      "https://api.clayful.io/v1/brands",
+    const collectionsPayload = await axios.get<ICollection[]>(
+      "https://api.clayful.io/v1/collections",
       {
         headers: {
           Accept: "application/json",
@@ -121,13 +119,16 @@ export const getStaticProps: GetStaticProps<
       }
     );
     return {
-      props: { pages: catalogPayload.data, brand: brandPayload.data },
+      props: {
+        pages: catalogPayload.data,
+        collections: collectionsPayload.data,
+      },
     };
   } catch (e) {
     return {
       props: {
         pages: null,
-        brand: null,
+        collections: null,
       },
     };
   }

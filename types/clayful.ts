@@ -39,3 +39,22 @@ export interface IBrand {
   updatedAt: IChangedAt;
   slug: string;
 }
+
+export interface ICollection {
+  _id: string;
+  name: string;
+  description: string;
+  path: ICollectionPath[];
+  parent: ICollectionPath;
+  thumbnail: IImage;
+  meta: { text: string | null };
+  createdAt: IChangedAt;
+  updatedAt: IChangedAt;
+  slug: string;
+}
+
+interface ICollectionPath {
+  _id: string;
+  name: string;
+  slug: string;
+}

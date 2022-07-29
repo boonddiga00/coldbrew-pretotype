@@ -43,6 +43,10 @@ const TextContainer = styled.div<{ isReverse: boolean }>`
   h1:nth-child(2) {
     margin-bottom: 20px;
   }
+  h1:nth-child(3) {
+    margin-top: -20px;
+    margin-bottom: 20px;
+  }
   @media screen and (max-width: 800px) {
     justify-content: center;
     padding-bottom: 100px;

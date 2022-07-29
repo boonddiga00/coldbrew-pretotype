@@ -54,8 +54,8 @@ const Header = () => {
           </Link>
         </NavIcon>
         <NavIcon>
-          <Link href="/subscribe">
-            <a>구독하기</a>
+          <Link href="/emailForm">
+            <a>혜택 받기</a>
           </Link>
         </NavIcon>
       </Navigation>

@@ -2,10 +2,8 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 
 const Container = styled.section<ISectionProps>`
-  padding: (
-    ${({ verticalPadding }) => (verticalPadding ? verticalPadding : 0)}
-      ${({ horizontalPadding }) => (horizontalPadding ? horizontalPadding : 0)}
-  );
+  padding: ${({ verticalPadding }) =>
+    `${verticalPadding ? verticalPadding : 0}`};
   @media screen and (max-width: 800px) {
     padding: 0 16px;
   }
