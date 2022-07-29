@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import styled from "styled-components";
 
 const ButtonOrange = styled.button`
@@ -9,14 +10,18 @@ const ButtonOrange = styled.button`
   color: #ffffff;
   font-weight: 700;
   border-radius: 10px;
+  @media screen and (max-width: 430px) {
+    font-size: 18px;
+  }
 `;
 
 interface IButtonProps {
+  onClick: MouseEventHandler<HTMLButtonElement>;
   text: string;
 }
 
-const Button = ({ text }: IButtonProps) => {
-  return <ButtonOrange>{text}</ButtonOrange>;
+const Button = ({ onClick, text }: IButtonProps) => {
+  return <ButtonOrange onClick={onClick}>{text}</ButtonOrange>;
 };
 
 export default Button;

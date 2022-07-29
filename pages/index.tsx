@@ -11,6 +11,7 @@ import {
   DescriptionText,
 } from "../components/interfaces/TextInterfaces";
 import Collections from "../components/Collections";
+import { useRouter } from "next/router";
 
 const GoToSubscribe = styled.div`
   width: 100%;
@@ -54,6 +55,10 @@ const Title = styled(TitleText)<{ color: string }>`
 const Description = styled(DescriptionText)``;
 
 const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, collections }) => {
+  const router = useRouter();
+  const onClick = () => {
+    router.push("/emailForm");
+  };
   return (
     <>
       <Section verticalPadding="30px">
@@ -82,7 +87,7 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, collections }) => {
               {string}
             </Title>
           ))}
-          <Button text="혜택 받기" />
+          <Button onClick={onClick} text="혜택 받기" />
         </ImageFullPage>
       </Section>
     </>
