@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 
 const GoToSubscribe = styled.div`
   width: 100%;
-  height: calc(var(--vh, 1vh) * 100);
+  height: ${({ theme }) => theme.vh100};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,13 +31,13 @@ const Links = styled.div`
   padding-bottom: 100px;
   a {
     font-size: 20px;
-    color: #ff6b00;
+    color: ${(props) => props.theme.orangeColor};
   }
 `;
 
 const ImageFullPage = styled.div<{ url?: string }>`
   width: 100vw;
-  height: calc(var(--vh, 1vh) * 100);
+  height: ${({ theme }) => theme.vh100};
   background-image: url(${(props) => props.url});
   display: flex;
   flex-direction: column;
@@ -128,6 +128,7 @@ export const getStaticProps: GetStaticProps<
         pages: catalogPayload.data,
         collections: collectionsPayload.data,
       },
+      revalidate: 10,
     };
   } catch (e) {
     return {

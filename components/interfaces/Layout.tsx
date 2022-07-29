@@ -1,7 +1,8 @@
 import Head from "next/head";
 import { ReactNode, useEffect } from "react";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import reset from "styled-reset";
+import { myTheme } from "../../styles/theme";
 import Header from "../Header";
 
 const GlobalStyle = createGlobalStyle`
@@ -47,8 +48,10 @@ const Layout = ({ children }: LayoutProps) => {
         />
       </Head>
       <GlobalStyle />
-      <Header />
-      <main>{children}</main>
+      <ThemeProvider theme={myTheme}>
+        <Header />
+        <main>{children}</main>
+      </ThemeProvider>
     </>
   );
 };

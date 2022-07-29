@@ -6,7 +6,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+  box-shadow: ${(props) => props.theme.boxShadow};
   @media screen and (max-width: 1150px) and (min-width: 431px) {
     flex-direction: column-reverse;
   }
