@@ -1,11 +1,14 @@
 import Head from "next/head";
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import Header from "../Header";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
+  :root {
+    --vh: 100%;
+   }
   * {
     box-sizing: border-box;
   }
@@ -27,6 +30,13 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
+  const setScreenSize = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty("--vh", `${vh}px`);
+  };
+  useEffect(() => {
+    setScreenSize();
+  });
   return (
     <>
       <Head>

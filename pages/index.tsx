@@ -14,7 +14,7 @@ import Collections from "../components/Collections";
 
 const GoToSubscribe = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,7 +36,7 @@ const Links = styled.div`
 
 const ImageFullPage = styled.div<{ url?: string }>`
   width: 100vw;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   background-image: url(${(props) => props.url});
   display: flex;
   flex-direction: column;
