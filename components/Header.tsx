@@ -13,6 +13,7 @@ const Container = styled.header`
   z-index: 1;
   display: flex;
   justify-content: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const Navigation = styled.nav`
