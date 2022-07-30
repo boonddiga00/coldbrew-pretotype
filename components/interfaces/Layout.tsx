@@ -37,7 +37,7 @@ const Layout = ({ children }: LayoutProps) => {
   };
   useEffect(() => {
     setScreenSize();
-  });
+  }, []);
   return (
     <>
       <Head>
@@ -47,8 +47,8 @@ const Layout = ({ children }: LayoutProps) => {
           content="직장인들을 위한 콜드브루 정기구독 서비스"
         />
       </Head>
-      <GlobalStyle />
       <ThemeProvider theme={myTheme}>
+        <GlobalStyle />
         <Header />
         <main>{children}</main>
       </ThemeProvider>
