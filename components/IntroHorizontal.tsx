@@ -8,6 +8,7 @@ const Container = styled.div<{ isReverse: boolean }>`
   justify-content: center;
   flex-direction: ${({ isReverse }) => (isReverse ? "row-reverse" : "row")};
   align-items: center;
+  height: 100vh;
   height: ${({ theme }) => theme.vh100};
   @media screen and (max-width: 800px) {
     flex-direction: column;

@@ -4,6 +4,7 @@ import CollectionBox from "./CollectionBox";
 import { DescriptionText, TitleText } from "./interfaces/TextInterfaces";
 
 const Container = styled.div`
+  height: 100vh;
   height: ${({ theme }) => theme.vh100};
   display: flex;
   align-items: center;

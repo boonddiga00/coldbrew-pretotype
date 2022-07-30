@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 
 const GoToSubscribe = styled.div`
   width: 100%;
+  height: 100vh;
   height: ${({ theme }) => theme.vh100};
   display: flex;
   flex-direction: column;
@@ -37,6 +38,7 @@ const Links = styled.div`
 
 const ImageFullPage = styled.div<{ url?: string }>`
   width: 100vw;
+  height: 100vh;
   height: ${({ theme }) => theme.vh100};
   background-image: url(${(props) => props.url});
   display: flex;

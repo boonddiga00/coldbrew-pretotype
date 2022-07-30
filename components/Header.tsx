@@ -45,16 +45,9 @@ const Logo = styled.img`
 `;
 
 const Header = () => {
-  const [match, setMatch] = useState(false);
   const router = useRouter();
-  useEffect(() => {
-    if (router.pathname === "/emailForm") {
-      setMatch(true);
-    } else {
-      setMatch(false);
-    }
-  }, [router]);
-  return !match ? (
+
+  return router.pathname !== "/emailForm" ? (
     <Container>
       <Navigation>
         <NavIcon logo>
