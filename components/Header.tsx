@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.header`
@@ -45,8 +45,16 @@ const Logo = styled.img`
 `;
 
 const Header = () => {
+  const [match, setMatch] = useState(false);
   const router = useRouter();
-  return router.pathname !== "/emailForm" ? (
+  useEffect(() => {
+    if (router.pathname === "/emailForm") {
+      setMatch(true);
+    } else {
+      setMatch(false);
+    }
+  }, [router]);
+  return !match ? (
     <Container>
       <Navigation>
         <NavIcon logo>
