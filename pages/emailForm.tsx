@@ -8,20 +8,20 @@ import {
 } from "../components/interfaces/TextInterfaces";
 
 const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: ${({ theme }) => theme.vh100};
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
 `;
 
 const TextContainer = styled.div`
-  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   gap: 30px;
   padding: 20px;
   background-color: #ffffff;
@@ -29,11 +29,13 @@ const TextContainer = styled.div`
 
 const Title = styled(TitleText)`
   font-size: 56px;
+  text-align: center;
 `;
 
 const Description = styled(DescriptionText)`
   font-size: 16px;
   margin-bottom: 10px;
+  text-align: center;
 `;
 
 const Form = styled.form`

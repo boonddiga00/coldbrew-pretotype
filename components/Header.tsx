@@ -26,7 +26,7 @@ const Navigation = styled.nav`
 const NavIcon = styled.li<{ logo?: true }>`
   list-style: none;
   font-size: ${(props) => (props.logo ? "20px" : "16px")};
-  font-weight: ${(props) => (props.logo ? "500" : "700")};
+  font-weight: ${(props) => (props.logo ? "400" : "700")};
   color: ${(props) => (props.logo ? "#000000" : "gray")};
   ${(props) => (props.logo ? "letter-spacing: 2px" : "")};
   a {
