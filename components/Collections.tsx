@@ -61,14 +61,12 @@ const Collections = ({ collections, page }: ICollectionsProps) => {
       </TextContainer>
       <CollectionContainer>
         {collections &&
-          collections
-            .reverse()
-            .map((collection, index) => (
-              <CollectionBox
-                key={`colletion-box ${index}`}
-                collection={collection}
-              />
-            ))}
+          collections.map((collection, index) => (
+            <CollectionBox
+              key={`colletion-box ${index}`}
+              collection={collection}
+            />
+          ))}
       </CollectionContainer>
     </Container>
   );

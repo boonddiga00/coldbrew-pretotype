@@ -31,12 +31,15 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const setScreenSize = () => {
-    let vh = window.innerHeight * 0.01;
+  const handleResize = () => {
+    const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
   };
+
   useEffect(() => {
-    setScreenSize();
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
   return (
     <>
