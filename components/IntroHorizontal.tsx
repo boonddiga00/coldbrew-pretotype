@@ -89,7 +89,7 @@ const IntroHorizontal = ({ reverse, page }: IIntroHorizontalProps) => {
     <Container isReverse={isReverse}>
       {page?.image && (
         <ImageContainer>
-          <Image src={page?.image.url} />
+          <Image src={page?.image.url} alt={page?.title} title={page?.title} />
         </ImageContainer>
       )}
       <TextContainer isReverse={isReverse}>

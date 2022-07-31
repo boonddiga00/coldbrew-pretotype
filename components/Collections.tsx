@@ -19,6 +19,13 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  h1:nth-child(2) {
+    margin-bottom: 30px;
+  }
+`;
+
+const DownArr = styled.span`
+  color: ${({ theme }) => theme.orangeColor};
 `;
 
 const Title = styled(TitleText)`
@@ -59,14 +66,18 @@ const Collections = ({ collections, page }: ICollectionsProps) => {
           <Description key={`description ${index}`}>{string}</Description>
         ))}
       </TextContainer>
+      <DownArr>추천 타입 예시 &#8595;</DownArr>
       <CollectionContainer>
         {collections &&
-          collections.map((collection, index) => (
-            <CollectionBox
-              key={`colletion-box ${index}`}
-              collection={collection}
-            />
-          ))}
+          collections
+            .slice()
+            .reverse()
+            .map((collection, index) => (
+              <CollectionBox
+                key={`colletion-box ${index}`}
+                collection={collection}
+              />
+            ))}
       </CollectionContainer>
     </Container>
   );

@@ -86,7 +86,11 @@ const CollectionBox = ({ collection }: ICollectionBoxProps) => {
         ))}
       </TextContainer>
       <ThumnailContainer>
-        <Thumnail src={collection.thumbnail.url} />
+        <Thumnail
+          src={collection.thumbnail.url}
+          alt={collection.name}
+          title={collection.name}
+        />
       </ThumnailContainer>
     </Container>
   );
