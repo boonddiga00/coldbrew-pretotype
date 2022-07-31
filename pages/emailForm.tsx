@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import styled from "styled-components";
 import Logo from "../components/interfaces/Logo";
@@ -73,6 +74,9 @@ interface IFormValues {
   email: string;
 }
 
+const EMAIL_REG_EXP =
+  /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
 const EmailForm = () => {
   const {
     register,
@@ -80,24 +84,28 @@ const EmailForm = () => {
     formState: { errors },
     setError,
   } = useForm<IFormValues>();
+  const [buttonLoading, setButtonLoading] = useState(false);
   const router = useRouter();
-  const EMAIL_REG_EXP =
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+
   const onValid: SubmitHandler<IFormValues> = async (data) => {
-    const res = await axios.post(
-      "/api/email",
-      {
-        email: data.email,
-      },
-      {
-        headers: {
-          Accept: "application/json",
+    if (buttonLoading) {
+      return;
+    }
+    setButtonLoading(true);
+    try {
+      await axios.post(
+        "/api/email",
+        {
+          email: data.email,
         },
-      }
-    );
-    if (res.status === 200) {
+        {
+          headers: {
+            Accept: "application/json",
+          },
+        }
+      );
       router.push("/thankyou");
-    } else {
+    } catch (e) {
       setError(
         "email",
         {
@@ -134,7 +142,10 @@ const EmailForm = () => {
             },
           })}
         />
-        <SubmitInput type="submit" value="저장하기" />
+        <SubmitInput
+          type="submit"
+          value={buttonLoading ? "로딩..." : "저장하기"}
+        />
       </Form>
       <ErrorMessage>{errors.email?.message}</ErrorMessage>
     </Container>

@@ -13,5 +13,6 @@ const firebaseCredential = {
 const firebaseAdmin = initializeApp({
   credential: cert(firebaseCredential),
 });
+const firestoreDB = getFirestore(firebaseAdmin);
 
-export const firestoreDB = getFirestore(firebaseAdmin);
+export { firestoreDB };

@@ -1,4 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { firestore } from "firebase-admin";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { firestoreDB } from "../../firebaseAdmin";
 
@@ -13,7 +14,10 @@ export default async function handler(
   if (req.method === "POST") {
     const email = req.body.email;
     try {
-      await firestoreDB.collection("pre-user").add({ email });
+      await firestoreDB.collection("pre-user").add({
+        email,
+        createdAt: firestore.FieldValue.serverTimestamp(),
+      });
       return res.status(200).end();
     } catch (e) {
       return res.status(500).end();
