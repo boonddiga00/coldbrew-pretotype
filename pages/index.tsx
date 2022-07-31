@@ -33,6 +33,9 @@ const Links = styled.div`
   a {
     font-size: 20px;
     color: ${(props) => props.theme.orangeColor};
+    @media screen and (max-width: 430px) {
+      font-size: 14px;
+    }
   }
 `;
 
