@@ -47,7 +47,7 @@ const Logo = styled.img`
 const Header = () => {
   const router = useRouter();
 
-  return router.pathname !== "/emailForm" ? (
+  return router.pathname !== "/emailForm" && router.pathname !== "/thankyou" ? (
     <Container>
       <Navigation>
         <NavIcon logo>

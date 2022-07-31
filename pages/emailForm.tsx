@@ -96,7 +96,7 @@ const EmailForm = () => {
       }
     );
     if (res.status === 200) {
-      router.push("/");
+      router.push("/thankyou");
     } else {
       setError(
         "email",
