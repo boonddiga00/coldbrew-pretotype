@@ -12,9 +12,9 @@ import {
 } from "../components/interfaces/TextInterfaces";
 import Collections from "../components/Collections";
 import { useRouter } from "next/router";
+import GoToEmail from "../components/GoToEmail";
 
-const GoToSubscribe = styled.div`
-  position: relative;
+const StartPage = styled.div`
   width: 100%;
   height: 100vh;
   height: ${({ theme }) => theme.vh100};
@@ -23,21 +23,6 @@ const GoToSubscribe = styled.div`
   align-items: center;
   justify-content: center;
   gap: 30px;
-`;
-
-const Links = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 100px;
-  a {
-    font-size: 20px;
-    color: ${(props) => props.theme.orangeColor};
-    @media screen and (max-width: 430px) {
-      font-size: 14px;
-    }
-  }
 `;
 
 const ImageFullPage = styled.div<{ url?: string }>`
@@ -60,30 +45,6 @@ const Title = styled(TitleText)<{ color: string }>`
 
 const Description = styled(DescriptionText)``;
 
-const ScrollDown = styled.div`
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 5px;
-  span {
-    font-size: 14px;
-  }
-  @keyframes upDown {
-    from {
-      bottom: 100px;
-    }
-    to {
-      bottom: 95px;
-    }
-  }
-  animation: upDown 0.5s infinite ease-in-out alternate;
-`;
-
 const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, collections }) => {
   const router = useRouter();
   const onClick = () => {
@@ -92,45 +53,26 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, collections }) => {
   return (
     <>
       <Section verticalPadding="30px">
-        <GoToSubscribe>
-          <Title color="#000000">{pages?.title}</Title>
-          <Description>{pages?.description}</Description>
-          <Links>
-            <Link href="/emailForm">
-              <a>이메일 적고 혜택 받아가기 &rarr;</a>
-            </Link>
-          </Links>
-          <ScrollDown>
-            <span>Scroll Down</span>
-            <svg
-              id="geist-icon"
-              fill="none"
-              height="24"
-              shapeRendering="geometricPrecision"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="3"
-              viewBox="0 0 24 24"
-              width="24"
-              style={{ color: "var(--geist-foreground)" }}
-            >
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </ScrollDown>
-        </GoToSubscribe>
+        <GoToEmail title={pages?.title} description={pages?.description} />
       </Section>
       <Section verticalPadding="30px">
-        <IntroHorizontal page={pages?.items[0]} />
-        <IntroHorizontal page={pages?.items[1]} reverse />
+        <StartPage>
+          {pages?.items[0].description.split("\\n").map((string, index) => (
+            <Description key={`intro-description ${index}`}>
+              {string}
+            </Description>
+          ))}
+        </StartPage>
+        <IntroHorizontal page={pages?.items[1]} />
+        <IntroHorizontal page={pages?.items[2]} reverse />
         {collections && (
-          <Collections collections={collections} page={pages?.items[2]} />
+          <Collections collections={collections} page={pages?.items[3]} />
         )}
-        <IntroHorizontal page={pages?.items[3]} />
+        <IntroHorizontal page={pages?.items[4]} />
       </Section>
       <Section>
-        <ImageFullPage url={pages?.items[4].image?.url}>
-          {pages?.items[4].title.split("\\n").map((string, index) => (
+        <ImageFullPage url={pages?.items[5].image?.url}>
+          {pages?.items[5].title.split("\\n").map((string, index) => (
             <Title color="#ffffff" key={`fullpage-title ${index}`}>
               {string}
             </Title>
@@ -176,7 +118,7 @@ export const getStaticProps: GetStaticProps<
         pages: catalogPayload.data,
         collections: collectionsPayload.data,
       },
-      revalidate: 10,
+      revalidate: 20,
     };
   } catch (e) {
     return {

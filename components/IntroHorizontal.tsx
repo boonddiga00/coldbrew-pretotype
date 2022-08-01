@@ -49,11 +49,11 @@ const TextContainer = styled.div<{ isReverse: boolean }>`
     margin-bottom: 20px;
   }
   @media screen and (max-width: 800px) {
+    width: 100%;
     justify-content: center;
     padding-bottom: 100px;
   }
   @media screen and (max-width: 380px) {
-    width: 100%;
     h1 {
       width: 100%;
     }
@@ -65,6 +65,7 @@ const Title = styled(TitleText)<{ isReverse: boolean }>`
   width: 70%;
   line-height: 1.5;
   @media screen and (max-width: 800px) {
+    width: 100%;
     text-align: left;
   }
 `;
@@ -74,6 +75,7 @@ const Description = styled(DescriptionText)<{ isReverse: boolean }>`
   width: 70%;
   line-height: 1.5;
   @media screen and (max-width: 800px) {
+    width: 100%;
     text-align: left;
   }
 `;

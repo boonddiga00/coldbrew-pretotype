@@ -128,7 +128,7 @@ const EmailForm = () => {
           <Description>
             알림을 받으시고 싶으시다면 이메일을 입력해주시고,
           </Description>
-          <Description>다양한 혜택도 받아가세요!</Description>
+          <Description>초기 고객 전용 혜택도 받아가세요!</Description>
         </div>
       </TextContainer>
       <Form onSubmit={handleSubmit(onValid)}>
