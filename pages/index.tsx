@@ -5,7 +5,6 @@ import { ICatalog, ICollection } from "../types/clayful";
 import Button from "../components/interfaces/Button";
 import styled from "styled-components";
 import Section from "../components/interfaces/Section";
-import Link from "next/link";
 import {
   TitleText,
   DescriptionText,
@@ -35,8 +34,7 @@ const ImageFullPage = styled.div<{ url?: string }>`
   align-items: center;
   justify-content: center;
   gap: 30px;
-  position: absolute;
-  left: 0;
+  object-fit: contain;
 `;
 
 const Title = styled(TitleText)<{ color: string }>`
@@ -58,9 +56,7 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, collections }) => {
       <Section verticalPadding="30px">
         <StartPage>
           {pages?.items[0].description.split("\\n").map((string, index) => (
-            <Description key={`intro-description ${index}`}>
-              {string}
-            </Description>
+            <Description key={`start-page ${index}`}>{string}</Description>
           ))}
         </StartPage>
         <IntroHorizontal page={pages?.items[1]} />
@@ -70,16 +66,14 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, collections }) => {
         )}
         <IntroHorizontal page={pages?.items[4]} />
       </Section>
-      <Section>
-        <ImageFullPage url={pages?.items[5].image?.url}>
-          {pages?.items[5].title.split("\\n").map((string, index) => (
-            <Title color="#ffffff" key={`fullpage-title ${index}`}>
-              {string}
-            </Title>
-          ))}
-          <Button onClick={onClick} text="혜택 받기" />
-        </ImageFullPage>
-      </Section>
+      <ImageFullPage url={pages?.items[5].image?.url}>
+        {pages?.items[5].title.split("\\n").map((string, index) => (
+          <Title color="#ffffff" key={`fullpage-title ${index}`}>
+            {string}
+          </Title>
+        ))}
+        <Button onClick={onClick} text="혜택 받기" />
+      </ImageFullPage>
     </>
   );
 };

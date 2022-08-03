@@ -5,7 +5,7 @@ const Container = styled.section<ISectionProps>`
   padding: ${({ verticalPadding }) =>
     `${verticalPadding ? verticalPadding : 0}`};
   @media screen and (max-width: 800px) {
-    padding: 0 16px;
+    padding: ${({ verticalPadding }) => `${verticalPadding ? "16px" : 0}`};
   }
 `;
 

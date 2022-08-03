@@ -56,6 +56,7 @@ const Input = styled.input`
 
 const SubmitInput = styled.input`
   all: unset;
+  cursor: pointer;
   padding: 10px 10px;
   background-color: ${({ theme }) => theme.orangeColor};
   margin-left: 10px;

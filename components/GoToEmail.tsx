@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { TitleText } from "./interfaces/TextInterfaces";
+import { DescriptionText, TitleText } from "./interfaces/TextInterfaces";
 import ScrollDown from "./ScrollDown";
 
 const Container = styled.div`
@@ -41,6 +41,7 @@ const GoToEmail = ({ title, description }: IGoToEmailProps) => {
   return (
     <Container>
       <Title>{title}</Title>
+      <DescriptionText>{description}</DescriptionText>
       <Links>
         <Link href="/emailForm">
           <a>이메일 적고 혜택 받아가기 &rarr;</a>
