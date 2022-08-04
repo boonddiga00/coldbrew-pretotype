@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;

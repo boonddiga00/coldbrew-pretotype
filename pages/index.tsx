@@ -5,24 +5,10 @@ import { ICatalog, ICollection } from "../types/clayful";
 import Button from "../components/interfaces/Button";
 import styled from "styled-components";
 import Section from "../components/interfaces/Section";
-import {
-  TitleText,
-  DescriptionText,
-} from "../components/interfaces/TextInterfaces";
+import { TitleText } from "../components/interfaces/TextInterfaces";
 import Collections from "../components/Collections";
 import { useRouter } from "next/router";
-import GoToEmail from "../components/GoToEmail";
-
-const StartPage = styled.div`
-  width: 100%;
-  height: 100vh;
-  height: ${({ theme }) => theme.vh100};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 30px;
-`;
+import StartPage from "../components/StartPage";
 
 const ImageFullPage = styled.div<{ url?: string }>`
   width: 100vw;
@@ -41,8 +27,6 @@ const Title = styled(TitleText)<{ color: string }>`
   color: ${(props) => props.color};
 `;
 
-const Description = styled(DescriptionText)``;
-
 const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, collections }) => {
   const router = useRouter();
   const onClick = () => {
@@ -50,15 +34,8 @@ const Home: NextPage<IGetStaticPropsRetrun> = ({ pages, collections }) => {
   };
   return (
     <>
+      <StartPage page={pages?.items[0]} />
       <Section verticalPadding="30px">
-        <GoToEmail title={pages?.title} description={pages?.description} />
-      </Section>
-      <Section verticalPadding="30px">
-        <StartPage>
-          {pages?.items[0].description.split("\\n").map((string, index) => (
-            <Description key={`start-page ${index}`}>{string}</Description>
-          ))}
-        </StartPage>
         <IntroHorizontal page={pages?.items[1]} />
         <IntroHorizontal page={pages?.items[2]} reverse />
         {collections && (

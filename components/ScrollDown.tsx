@@ -9,25 +9,28 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
   span {
-    font-size: 14px;
+    font-size: 18px;
+    color: #ffffff;
   }
-  @keyframes upDown {
-    from {
-      bottom: 100px;
+  svg {
+    @keyframes upDown {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(5px);
+      }
     }
-    to {
-      bottom: 95px;
-    }
+    animation: upDown 0.5s infinite ease-in-out alternate;
   }
-  animation: upDown 0.5s infinite ease-in-out alternate;
 `;
 
 const ScrollDown = () => {
   return (
     <Container>
-      <span>Scroll Down</span>
+      <span>콜드브루 정기구독하러 가기</span>
       <svg
         id="geist-icon"
         fill="none"
@@ -39,7 +42,7 @@ const ScrollDown = () => {
         strokeWidth="3"
         viewBox="0 0 24 24"
         width="24"
-        style={{ color: "var(--geist-foreground)" }}
+        style={{ color: "#ffffff" }}
       >
         <path d="M6 9l6 6 6-6" />
       </svg>

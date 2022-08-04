@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.header`
@@ -39,8 +38,8 @@ const NavIcon = styled.li<{ logo?: true }>`
 `;
 
 const Logo = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 `;
 

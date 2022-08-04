@@ -31,13 +31,20 @@ const TextContainer = styled.div`
 `;
 
 const Title = styled(TitleText)`
-  font-size: 56px;
+  font-size: 32px;
   text-align: center;
+`;
+
+const DescriptionBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 `;
 
 const Description = styled(DescriptionText)`
   font-size: 16px;
-  margin-bottom: 10px;
   text-align: center;
 `;
 
@@ -69,6 +76,13 @@ const ErrorMessage = styled.span`
   color: red;
   font-size: 12px;
   margin-top: 10px;
+`;
+
+const Caution = styled.span`
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 1.5;
 `;
 
 interface IFormValues {
@@ -114,6 +128,7 @@ const EmailForm = () => {
         },
         { shouldFocus: true }
       );
+      setButtonLoading(false);
     }
   };
   return (
@@ -121,16 +136,13 @@ const EmailForm = () => {
       <TextContainer>
         <Logo />
         <Title>감사합니다!</Title>
-        <div>
-          <Description>
-            관심을 가져주신 고객님께 감사의 말씀드립니다.
-          </Description>
+        <DescriptionBox>
           <Description>저희 서비스가 정식으로 출시될 때,</Description>
           <Description>
             알림을 받으시고 싶으시다면 이메일을 입력해주시고,
           </Description>
           <Description>초기 고객 전용 혜택도 받아가세요!</Description>
-        </div>
+        </DescriptionBox>
       </TextContainer>
       <Form onSubmit={handleSubmit(onValid)}>
         <Input
@@ -149,6 +161,9 @@ const EmailForm = () => {
         />
       </Form>
       <ErrorMessage>{errors.email?.message}</ErrorMessage>
+      <Caution>
+        * 추후 해당 이메일로 회원가입 하셔야 혜택이 지급됩니다. *
+      </Caution>
     </Container>
   );
 };

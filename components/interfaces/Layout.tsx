@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Script from "next/script";
 import { ReactNode, useEffect } from "react";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
@@ -33,6 +34,19 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
+  const router = useRouter();
+  const titleString = () => {
+    switch (router.pathname) {
+      case "/":
+        return "AfterNight";
+      case "/emailForm":
+        return "AfterNight | 이메일 입력";
+      case "/thankyou":
+        return "AfterNight | Thank You";
+      default:
+        return "AfterNight";
+    }
+  };
   const handleResize = () => {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
@@ -44,7 +58,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Head>
-        <title>After Night</title>
+        <title>{titleString()}</title>
         <meta
           name="description"
           content="직장인들을 위한 콜드브루 정기구독 서비스"
@@ -56,10 +70,10 @@ const Layout = ({ children }: LayoutProps) => {
       ></Script>
       <Script id="google-analytics" strategy="afterInteractive">
         {`window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
 
-  gtag('config', 'G-EXGLXT8ZD7');`}
+          gtag('config', 'G-EXGLXT8ZD7');`}
       </Script>
       <ThemeProvider theme={myTheme}>
         <GlobalStyle />
