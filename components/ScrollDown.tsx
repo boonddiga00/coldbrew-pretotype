@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  width: 100%;
   position: absolute;
   bottom: 100px;
   left: 50%;
