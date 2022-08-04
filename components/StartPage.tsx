@@ -13,7 +13,7 @@ const Container = styled(motion.div)`
   align-items: center;
   justify-content: center;
   gap: 50px;
-  background-color: ${(props) => props.theme.orangeColor};
+  background-color: ${({ theme }) => theme.orangeColor};
 `;
 
 const TitleContainer = styled.div`

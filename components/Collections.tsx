@@ -11,6 +11,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 30px;
+  margin-bottom: 200px;
 `;
 
 const TextContainer = styled.div`

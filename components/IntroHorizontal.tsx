@@ -10,6 +10,7 @@ const Container = styled.div<{ isReverse: boolean }>`
   align-items: center;
   height: 100vh;
   height: ${({ theme }) => theme.vh100};
+  margin-bottom: 100px;
   @media screen and (max-width: 800px) {
     flex-direction: column;
     div {
@@ -95,11 +96,17 @@ const IntroHorizontal = ({ reverse, page }: IIntroHorizontalProps) => {
         </ImageContainer>
       )}
       <TextContainer isReverse={isReverse}>
-        {page?.title.split("\\n").map((string, index) => (
-          <Title key={`title ${index}`} isReverse={isReverse}>
-            {string}
-          </Title>
-        ))}
+        {page?.title.split("\\n").map((string, index) =>
+          string.includes("&darr;") ? (
+            <Title key={`title ${index}`} isReverse={isReverse}>
+              {string.replace("&darr;", "")} &darr;
+            </Title>
+          ) : (
+            <Title key={`title ${index}`} isReverse={isReverse}>
+              {string}
+            </Title>
+          )
+        )}
         {page?.description.split("\\n").map((string, index) => (
           <Description key={`description ${index}`} isReverse={isReverse}>
             {string}
