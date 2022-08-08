@@ -68,6 +68,7 @@ const Layout = ({ children }: LayoutProps) => {
         <title>{titleString()}</title>
         <meta
           name="description"
+          property="og:description"
           content="직장인들을 위한 콜드브루 정기구독 서비스"
         />
       </Head>
