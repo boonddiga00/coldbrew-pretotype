@@ -6,6 +6,7 @@ import {
 } from "../components/interfaces/TextInterfaces";
 
 const Container = styled.div`
+  min-height: ${({ theme }) => theme.vh100};
   height: ${({ theme }) => theme.vh100};
   width: 100%;
   display: flex;

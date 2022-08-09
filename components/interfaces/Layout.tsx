@@ -18,6 +18,9 @@ const GlobalStyle = createGlobalStyle`
   }
   html {
     font-family: 'Roboto', sans-serif;
+    -webkit-text-size-adjust: none; 
+    -moz-text-size-adjust: none; 
+    -ms-text-size-adjust: none;
   }
   a {
     all: unset;

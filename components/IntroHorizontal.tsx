@@ -9,6 +9,7 @@ const Container = styled.div<{ isReverse: boolean }>`
   flex-direction: ${({ isReverse }) => (isReverse ? "row-reverse" : "row")};
   align-items: center;
   height: 100vh;
+  min-height: ${({ theme }) => theme.vh100};
   height: ${({ theme }) => theme.vh100};
   margin-bottom: 100px;
   gap: 20px;
