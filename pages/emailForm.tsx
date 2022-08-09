@@ -52,7 +52,7 @@ const Form = styled.form`
   padding-left: 20px;
 `;
 
-const Input = styled.input`
+const EmailInput = styled.input`
   all: unset;
   padding: 10px 10px;
   border: 1px solid ${({ theme }) => theme.orangeColor};
@@ -145,7 +145,7 @@ const EmailForm = () => {
         </DescriptionBox>
       </TextContainer>
       <Form onSubmit={handleSubmit(onValid)}>
-        <Input
+        <EmailInput
           placeholder="이메일을 입력해주세요."
           {...register("email", {
             required: "이메일을 입력해주세요.",
@@ -157,7 +157,7 @@ const EmailForm = () => {
         />
         <SubmitInput
           type="submit"
-          value={buttonLoading ? "로딩..." : "저장하기"}
+          value={buttonLoading ? "로딩..." : "보내기"}
         />
       </Form>
       <ErrorMessage>{errors.email?.message}</ErrorMessage>

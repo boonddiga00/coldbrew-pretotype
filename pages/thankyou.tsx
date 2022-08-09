@@ -35,7 +35,7 @@ const ThankYou = () => {
       <Title>감사합니다.</Title>
       <Description>답변이 성공적으로 저장되었습니다.</Description>
       <Description>서비스 출시 시 보내주신 이메일로 로그인 하시면</Description>
-      <Description>1년간 10% 할인 쿠폰을 지급해드립니다!</Description>
+      <Description>구독 1년(12회) 10% 할인 쿠폰을 지급해드립니다!</Description>
       <GoHomeButton onClick={() => router.push("/")}>
         홈으로 돌아가기
       </GoHomeButton>
