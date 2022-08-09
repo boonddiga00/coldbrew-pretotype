@@ -11,8 +11,8 @@ import {
 
 const Container = styled.div`
   width: 100%;
-  min-height: 100vh;
-  min-height: ${({ theme }) => theme.vh100};
+  height: 100vh;
+  height: ${({ theme }) => theme.vh100};
   display: flex;
   justify-content: center;
   flex-direction: column;

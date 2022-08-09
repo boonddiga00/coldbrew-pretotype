@@ -12,8 +12,8 @@ import StartPage from "../components/StartPage";
 
 const ImageFullPage = styled.div<{ url?: string }>`
   width: 100vw;
-  min-height: 100vh;
-  min-height: ${({ theme }) => theme.vh100};
+  height: 100vh;
+  height: ${({ theme }) => theme.vh100};
   background-image: url(${(props) => props.url});
   display: flex;
   flex-direction: column;

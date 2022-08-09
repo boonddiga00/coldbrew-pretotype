@@ -8,9 +8,10 @@ const Container = styled.div<{ isReverse: boolean }>`
   justify-content: center;
   flex-direction: ${({ isReverse }) => (isReverse ? "row-reverse" : "row")};
   align-items: center;
-  min-height: 100vh;
-  min-height: ${({ theme }) => theme.vh100};
+  height: 100vh;
+  height: ${({ theme }) => theme.vh100};
   margin-bottom: 100px;
+  gap: 20px;
   @media screen and (max-width: 800px) {
     flex-direction: column;
     div {
@@ -43,11 +44,11 @@ const TextContainer = styled.div<{ isReverse: boolean }>`
   flex-direction: column;
   align-items: center;
   h1:nth-child(2) {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   h1:nth-child(3) {
-    margin-top: -20px;
-    margin-bottom: 20px;
+    margin-top: -10px;
+    margin-bottom: 10px;
   }
   @media screen and (max-width: 800px) {
     width: 100%;
