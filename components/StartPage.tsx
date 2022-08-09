@@ -6,8 +6,8 @@ import ScrollDown from "./ScrollDown";
 const Container = styled(motion.div)`
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: ${({ theme }) => theme.vh100};
+  min-height: 100vh;
+  min-height: ${({ theme }) => theme.vh100};
   display: flex;
   flex-direction: column;
   align-items: center;
