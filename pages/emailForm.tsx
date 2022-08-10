@@ -1,4 +1,5 @@
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -135,7 +136,12 @@ const EmailForm = () => {
   return (
     <Container>
       <TextContainer>
-        <Logo />
+        <Link href="/">
+          <a>
+            <Logo />
+          </a>
+        </Link>
+
         <Title>감사합니다!</Title>
         <DescriptionBox>
           <Description>저희 서비스가 정식으로 출시될 때,</Description>
